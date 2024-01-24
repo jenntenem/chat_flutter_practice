@@ -31,7 +31,36 @@ class MessageBubble extends StatelessWidget {
             ),
           ),
         ),
+        if (sendBy == 1) _ImageBubble(),
       ],
+    );
+  }
+}
+
+class _ImageBubble extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.network(
+        'https://picsum.photos/250?image=9',
+        width: size.width * 0.7,
+        height: 200,
+        fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+
+          // Loading image
+          return Container(
+            width: size.width * 0.7,
+            height: 200,
+            color: Colors.grey[300],
+            child: const Center(child: CircularProgressIndicator()),
+          );
+        },
+      ),
     );
   }
 }
