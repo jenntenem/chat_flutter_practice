@@ -21,6 +21,21 @@ class _ChatScreenState extends State<ChatScreen> {
                     'https://cdn.britannica.com/12/215012-004-33C40587/English-actor-Tom-Hiddleston-2018.jpg'),
               ),
             )),
-        body: Container());
+        body: _ChatView());
+  }
+}
+
+class _ChatView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const SafeArea(
+        child: Column(children: <Widget>[
+      // CHAT AREA
+      Expanded(
+        child: Text("data"),
+      ),
+      // INPUT AREA
+      Center(child: Text("data")),
+    ]));
   }
 }
