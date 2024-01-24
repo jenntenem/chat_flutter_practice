@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:chat_flutter_practice/presentation/widgets/chat/message_bubble.dart';
 
 class ChatList extends StatelessWidget {
   const ChatList({Key? key}) : super(key: key);
@@ -9,12 +10,7 @@ class ChatList extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       itemCount: 100,
       itemBuilder: (context, index) {
-        return Container(
-          height: 50,
-          margin: const EdgeInsets.all(2),
-          color: Colors.amber[200],
-          child: Center(child: Text('Entry $index')),
-        );
+        return MessageBubble(sendBy: index % 2, index: index);
       },
     );
   }
