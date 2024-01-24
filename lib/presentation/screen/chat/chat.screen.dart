@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chat_flutter_practice/presentation/widgets/shared/chat_list.dart';
+import 'package:chat_flutter_practice/presentation/widgets/shared/chat_input.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -34,7 +35,7 @@ class _ChatView extends StatelessWidget {
       // CHAT AREA
       Expanded(child: ChatList()),
       // INPUT AREA
-      Center(child: Text("data")),
+      ChatInput(),
     ]));
   }
 }
