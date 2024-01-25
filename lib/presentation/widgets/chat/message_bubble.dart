@@ -37,13 +37,18 @@ class MessageBubble extends StatelessWidget {
             ),
           ),
         ),
-        if (sendBy == SendType.other) _ImageBubble(),
+        if (sendBy == SendType.other && message.imageUrl?.isNotEmpty == true)
+          _ImageBubble(imageUrl: message.imageUrl!),
       ],
     );
   }
 }
 
 class _ImageBubble extends StatelessWidget {
+  final String imageUrl;
+
+  const _ImageBubble({required this.imageUrl});
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -51,7 +56,7 @@ class _ImageBubble extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
-        'https://picsum.photos/250?image=9',
+        imageUrl,
         width: size.width * 0.7,
         height: 200,
         fit: BoxFit.cover,
