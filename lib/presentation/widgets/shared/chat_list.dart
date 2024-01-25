@@ -12,6 +12,7 @@ class ChatList extends StatelessWidget {
     final chatProvider = context.watch<ChatProvider>();
 
     return ListView.builder(
+      controller: chatProvider.chatScrollController,
       padding: const EdgeInsets.all(8),
       itemCount: chatProvider.messages.length,
       itemBuilder: (context, index) {
