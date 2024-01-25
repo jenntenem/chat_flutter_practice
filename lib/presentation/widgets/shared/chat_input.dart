@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ChatInput extends StatelessWidget {
-  const ChatInput({super.key});
+  final ValueChanged<String> onValue;
+
+  const ChatInput({super.key, required this.onValue});
 
   @override
   Widget build(BuildContext context) {
@@ -10,6 +12,7 @@ class ChatInput extends StatelessWidget {
 
     sendMessage(String value) {
       // print('Submit value $value');
+      onValue(value);
       chatInputController.clear();
       focusNode.requestFocus();
     }

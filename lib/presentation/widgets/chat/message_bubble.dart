@@ -5,8 +5,10 @@ import 'package:chat_flutter_practice/domain/entities/message.class.dart';
 class MessageBubble extends StatelessWidget {
   final SendType sendBy; // 0: me, 1: other
   final int index;
+  final Message message;
 
-  const MessageBubble({super.key, required this.sendBy, this.index = 0})
+  const MessageBubble(
+      {super.key, required this.sendBy, this.index = 0, required this.message})
       : assert(sendBy == SendType.me || sendBy == SendType.other,
             'Invalid sendBy value');
 
@@ -30,7 +32,7 @@ class MessageBubble extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'Entry $index by ${sendBy == SendType.me ? 'me' : 'other'}',
+              message.text,
               style: const TextStyle(color: Colors.white, fontSize: 13),
             ),
           ),

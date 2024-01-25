@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:chat_flutter_practice/presentation/widgets/shared/chat_list.dart';
 import 'package:chat_flutter_practice/presentation/widgets/shared/chat_input.dart';
+import 'package:chat_flutter_practice/presentation/providers/chat.provider.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -30,12 +33,16 @@ class _ChatScreenState extends State<ChatScreen> {
 class _ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    final chatProvider = context.watch<ChatProvider>();
+
+    return SafeArea(
         child: Column(children: <Widget>[
       // CHAT AREA
-      Expanded(child: ChatList()),
+      const Expanded(child: ChatList()),
       // INPUT AREA
-      ChatInput(),
+      ChatInput(
+        onValue: (value) => chatProvider.sendMessage(value),
+      ),
     ]));
   }
 }
