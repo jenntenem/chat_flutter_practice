@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chat_flutter_practice/presentation/widgets/chat/message_bubble.dart';
+import 'package:chat_flutter_practice/domain/entities/message.class.dart';
 
 class ChatList extends StatelessWidget {
   const ChatList({Key? key}) : super(key: key);
@@ -10,7 +11,9 @@ class ChatList extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       itemCount: 100,
       itemBuilder: (context, index) {
-        return MessageBubble(sendBy: index % 2, index: index);
+        return MessageBubble(
+            sendBy: index % 2 == 0 ? SendType.me : SendType.other,
+            index: index);
       },
     );
   }
